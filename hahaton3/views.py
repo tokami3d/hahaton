@@ -1,13 +1,13 @@
 from searc_object import searc_object
-# import requests
-# from bs4 import BeautifulSoup
+import requests
+from bs4 import BeautifulSoup
 
 
-# ID_FILE_PATH = '/home/hello/Desktop/hahaton/hahaton3/id.txt' 
-# url = 'https://www.mashina.kg/search/all/'
-# def get_html(url: str) -> str:
-#     response = requests.get(url)
-#     return response.text
+ID_FILE_PATH = '/home/hello/Desktop/hahaton/hahaton3/id.txt' 
+url = 'https://www.mashina.kg/search/all/'
+def get_html(url: str) -> str:
+    response = requests.get(url)
+    return response.text
 
 
 
@@ -28,7 +28,7 @@ class CreatMixin:
     @staticmethod
     def get_data():
         import json
-        with open('/home/hello/Рабочий стол/hakatoon_CRUDmixin/data.json') as file:
+        with open('/home/hello/Desktop/hahaton/hahaton3/haha2.json') as file:
             return json.load(file)
 
 
@@ -64,7 +64,7 @@ class DestroyMixin:
         return {'staus': 404, 'msg': 'NOT FOUND!!!!!!'}
 
 class Cars(CreatMixin, RetrieveMixin, UpdateMixin, DestroyMixin):
-    def init(self):
+    def __init__(self):
         self.objects = self.get_data()
 
 
@@ -79,17 +79,17 @@ class Cars(CreatMixin, RetrieveMixin, UpdateMixin, DestroyMixin):
         
     def save(self):
         import json
-        with open('data.json', 'w') as file:
+        with open('haha.json', 'w') as file:
             json.dump(self.objects, file)
         return 'Saved!'
     
 
 
 
-# cars = Cars('BMW', 'x6', 2022, 6.3, '2ouse', 2000, 1000000000)
-# cars.save()
-# print(cars.entry('lexuse', 'rz 3000', '2023', 5.0, 'violet', 4000, 23400))
-# print(cars.save())
-# print(cars.list())
-# print(cars.detail(1))
-# print(cars.patch(1, price = 23000))
+cars = Cars('BMW', 'x6', 2022, 6.3, '2ouse', 2000, 1000000000)
+cars.save()
+print(cars.entry('lexuse', 'rz 3000', '2023', 5.0, 'cabrioetl', 80, 9986400))
+print(cars.save())
+print(cars.list())
+print(cars.detail(1))
+print(cars.patch(1, price = 23000))
